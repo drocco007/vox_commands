@@ -1,0 +1,17 @@
+from dragonfly import Key, Text
+
+cmd.map = {
+    'line <n>': Key('c-g/5') + Text('%(n)d') + Key('enter, home'),
+    'line <digit> <n>': Key('c-g/5') + Text('%(digit)d%(n)d') + Key('enter, home'),
+
+    'dupe': Key('c-d/5'),
+    '<n> dupe': Key('c-d:%(n)d'),
+    'whip': Key('c-w'),
+    '<n> whip': Key('c-w:%(n)d'),
+    'whop': Key('cs-w'),
+    '<n> whop': Key('cs-w:%(n)d'),
+    'Slurp': Key('c-y'),
+    '<n> Slurp': Key('c-y:%(n)d'),
+
+    'comment': Key('c-slash'),
+}
