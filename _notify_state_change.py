@@ -3,7 +3,8 @@ import zmq
 context = zmq.Context()
 socket = context.socket(zmq.PUB)
 
-socket.bind("tcp://*:5557")
+# socket.bind("tcp://*:5557")
+socket.connect('tcp://vmhost:5555')
 
 
 def on_state_change(change_type, argument):
