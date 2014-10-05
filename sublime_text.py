@@ -1,11 +1,12 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation,
-                       Key, Text, FocusWindow, IntegerRef)
+                       Key, Text, FocusWindow, IntegerRef, Choice)
+from dragonglue import LinuxAppContext
 
 
 #---------------------------------------------------------------------------
 # Create this module's grammar and the context under which it'll be active.
 
-context = AppContext(executable='sublime_text')
+context = LinuxAppContext(executable='sublime_text')
 grammar = Grammar("sublime text", context=context)
 
 
@@ -21,30 +22,57 @@ grammar = Grammar("sublime text", context=context)
 example_rule = MappingRule(
     name="sublime text",    # The name of the rule.
     mapping={
-        'close [file]': Key('c-w'),
+        'close [(file | tab)]': Key('c-w'),
+        'file new': Key('c-n'),
         'open [file]': Key('c-o'),
         'save [file]': Key('c-s'),
+
+        '[Enter] distraction free [mode]': Key('s-f11'),
+        '[toggle] sidebar': Key('c-k,c-b'),
+        '[toggle] menu': Key('cs-p') + Text('menu\n'),
+        '[toggle] tabs': Key('cs-p') + Text('tabs\n'),
+
         'entab': Key('c-pgdown'),
         'pretab': Key('c-pgup'),
         'flip': Key('c-tab'),
 
-        # 'line <n>': Key('c-g/5') + Text('%(n)d') + Key('enter, home'),
-        # 'line <digit> <n>': Key('c-g/5') + Text('%(digit)d%(n)d') + Key('enter, home'),
- 
-        # 'dupe': Key('cs-d'),
-        # '<n> dupe': Key('cs-d:%(n)d'),
-        # 'whip': Key('c-d'),
-        # 'Slurp': Key('cs-k'),
-        # '<n> Slurp': Key('cs-k:%(n)d'),
+        'See it': Key('cs-r'),
 
-        # 'comment': Key('c-slash'),
+        'Nav': Key('c-p'),
+        'Nav <text>': Key('c-p/5') + Text('%(text)s'),
+        'Nav in': Key('c-r'),
+        'Nav in <text>': Key('c-r/5') + Text('%(text)s'),
+        'command': Key('cs-p'),
+        'command <text>': Key('cs-p/5') + Text('%(text)s'),
+        'Panel <n>': Key('c-%(n)d'),
+        'Tab <n>': Key('a-%(n)d'),
+        'Rab <n>': Key('a-1/5, c-pgup/5:%(n)d'),
+
+        'project': Key('ca-p'),
+        'project <text>': Key('ca-p/5') + Text('%(text)s'),
+        'swap project': Key('ca-p, enter'),
 
         "find <text>":            Key("c-f/20") + Text("%(text)s\n"),
+
+        # Selection commands
+
+
+        # Editing commands
+
+        'centerize': Key('c-k, c-c'),
+        'lower (it | that)': Key('c-k, c-l'),
+
+
+        # Special phrases
+
+        'pound <directive>': Text('#%(directive)s '),
+        'dot H': Key('dot, h'),
     },
     extras=[           # Special elements in the specs of the mapping.
         Dictation("text"),
         IntegerRef("n", 1, 100),  # Times to repeat the sequence.
         IntegerRef("digit", 1, 10),  # Times to repeat the sequence.
+        Choice('directive', {'include': 'include', 'define': 'define'})
     ],
     )
 

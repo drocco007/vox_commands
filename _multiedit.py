@@ -1,6 +1,7 @@
 ﻿import os
 
 from dragonfly import *
+from dragonglue import LinuxAppContext
 
 
 release = Key("shift:up, ctrl:up")
@@ -207,7 +208,7 @@ class MultiContextGrammar(Grammar):
         for stem, config in self.rule_definitions.iteritems():
             command_mapping = self.base.cmd.map.copy()
             command_mapping.update(config.cmd.map)
-            context = AppContext(executable=stem)
+            context = LinuxAppContext(executable=stem)
             sequence = create_sequence(name=stem, mapping=command_mapping)
             rule = RepeatRule(name=stem, extras=[sequence, IntegerRef("n", 1, 100)], context=context)
 

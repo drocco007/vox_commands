@@ -1,12 +1,9 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation,
-                       Key, Text, FocusWindow, IntegerRef)
+                       Key, Text, FocusWindow, IntegerRef, Choice)
 
 
-#---------------------------------------------------------------------------
-# Create this module's grammar and the context under which it'll be active.
-
-context = AppContext(executable='chrome')
-grammar = Grammar('Chrome commands', context=context)
+context = AppContext(executable='console')
+grammar = Grammar('Console2 commands', context=context)
 
 
 #---------------------------------------------------------------------------
@@ -19,23 +16,23 @@ grammar = Grammar('Chrome commands', context=context)
 #  within a mapping spec and "%(text)s" within the associated action.
 
 example_rule = MappingRule(
-    name='Chrome commands',    
+    name='Console2 commands',
     mapping={
-        'Close tab': Key('c-w'),
-        'entab': Key('c-pgdown'),
-        'pretab': Key('c-pgup'),
-        'flip': Key('c-tab'),
-        '[Select] address': Key('a-d'),
+        'Work on': Text('workon '),
+        'Work on <client>': Text('workon %(client)s'),
 
-        # Links and stuff
-        'link': Key('comma'),
-        'click <n>': Text('%(n)d') + Key('enter'),
+        'git': Text('git'),
+        'git svn dcommit': Text('git svn dcommit'),
+        'git svn rebase': Text('git svn rebase'),
 
-        "find <text>":            Key("c-f/20") + Text("%(text)s\n"),
+        'ell ess': Text('ls'),
+        'ess cee pee': Text('scp'),
+        'pee SQL': Text('psql')
     },
     extras=[           # Special elements in the specs of the mapping.
         Dictation("text"),
         IntegerRef("n", 0, 100),  # Times to repeat the sequence.
+        Choice('client', {k:k.lower() for k in ('asppb', 'NHA')})
     ],
     )
 

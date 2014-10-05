@@ -5,7 +5,7 @@ from dragonfly import (Grammar, AppContext, MappingRule, Dictation,
 #---------------------------------------------------------------------------
 # Create this module's grammar and the context under which it'll be active.
 
-context = AppContext(executable='pycharm', title='py')
+context = AppContext(executable='java', title='py')
 grammar = Grammar('pycharm Python commands', context=context)
 
 
@@ -19,11 +19,13 @@ grammar = Grammar('pycharm Python commands', context=context)
 #  within a mapping spec and "%(text)s" within the associated action.
 
 example_rule = MappingRule(
-    name='pycharm Python commands',    
+    name='pycharm Python commands',
     mapping={
-        'Document comment': Text('""""""') + Key('left:3'),
+        'Document comment': Text('"""') + Key('enter'),
         'dunder <text>': Text('__%(text)s__'),
         'defun': Text('def') + Key('tab'),
+
+        'Set trace': Text('import pdb; pdb.set_trace()\n'),
 
         'for <text> in <text2>': Text('for %(text)s in %(text2)s:') + Key('enter'),
         'for <text> in X range <n>': Text('for %(text)s in xrange(%(n)d:') + Key('enter')

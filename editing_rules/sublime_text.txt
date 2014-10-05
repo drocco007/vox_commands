@@ -3,12 +3,36 @@ from dragonfly import Key, Text
 cmd.map = {
     'line <n>': Key('c-g/5') + Text('%(n)d') + Key('enter, home'),
     'line <digit> <n>': Key('c-g/5') + Text('%(digit)d%(n)d') + Key('enter, home'),
+    'line <n> (zero|oh) <digit2>': Key('c-g/5') + Text('%(n)d0%(digit2)d') + Key('enter, home'),
+    # 'line <n> <n2>': Key('c-g/5') + Text('%(n)d%(n2)d') + Key('enter, home'),
 
     'dupe': Key('cs-d'),
     '<n> dupe': Key('cs-d:%(n)d'),
-    'whip': Key('c-d'),
     'Slurp': Key('cs-k'),
     '<n> Slurp': Key('cs-k:%(n)d'),
 
     'comment': Key('c-slash'),
+
+
+    # Selection manipulation
+
+    'Sling': Key('c-l'),
+    'Split [lines]': Key('cs-l'),
+    'whip': Key('c-d'),
+    # 'lark': Key('cs-space'),
+    # 'sark': Key('cs-m'),
+
+    # 'lark': Key('end, home, as-s/10') + Text(r'/(?=\s*).*?(?=\s*[=:])/', pause=0.005) + Key('enter'),
+    # 'jark': Key('end, home, as-s/10') + Text(r'/.*?\s*[:=]\s*/', pause=0.005) + Key('enter/10, right') +
+    #         Key('as-s/10') + Text(r'/[^;\n]+/', pause=0.005) + Key('enter'),
+    # 'bark': Key('cs-m/10'),
+    # '<n> bark': Key('cs-m/10:%(n)d'),
+
+
+    # snork dork ork york jork tork
+
+    # oink boink doink toink joink
+
+
+    '[Console] log (time | timestamp)': Text('console.log(Date.now());', pause=0.005),
 }

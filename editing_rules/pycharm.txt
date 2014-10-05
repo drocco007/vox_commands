@@ -1,17 +1,40 @@
 from dragonfly import Key, Text
 
 cmd.map = {
-    'line <n>': Key('c-g/5') + Text('%(n)d') + Key('enter, home'),
-    'line <digit> <n>': Key('c-g/5') + Text('%(digit)d%(n)d') + Key('enter, home'),
+    'line <n>': Key('c-g/5') + Text('%(n)d', pause=0.005) + Key('enter, home'),
+    'line <digit> <n>': Key('c-g/5') + Text('%(digit)d%(n)d', pause=0.005) + Key('enter, home'),
+    'line <n> (zero|oh) <digit2>': Key('c-g/5') + Text('%(n)d0%(digit2)d', pause=0.005) + Key('enter, home'),
+    # 'line <n> <n2>': Key('c-g/5') + Text('%(n)d%(n2)d', pause=0.005) + Key('enter, home'),
+
+    '(Collapse | fold up)': Key('c-hyphen'),
+    '(Expand | fold down)': Key('c-plus'),
 
     'dupe': Key('c-d/5'),
     '<n> dupe': Key('c-d:%(n)d'),
+    'Slurp': Key('c-y'),
+    '<n> Slurp': Key('c-y:%(n)d'),
+
+    'lower (it | that)': Key('cas-6, escape'),
+
+
+    # Selection manipulation
     'whip': Key('c-w'),
     '<n> whip': Key('c-w:%(n)d'),
     'whop': Key('cs-w'),
     '<n> whop': Key('cs-w:%(n)d'),
-    'Slurp': Key('c-y'),
-    '<n> Slurp': Key('c-y:%(n)d'),
 
-    'comment': Key('c-slash'),
+
+    # snippets
+    'defun': Text('def ', pause=0.005),
+    '(def | defun) (prop | property)': Text('property', pause=0.005) + Key('tab'),
+    'print': Text('print ', pause=0.005),
+
+    '(equal | equals) None': Text(' = None', pause=0.005),
+    'squeeze None': Text('=None', pause=0.005),
+    '(equal | equals) True': Text(' = True', pause=0.005),
+    'squeeze True': Text('=True', pause=0.005),
+
+    'document comment': Key('dquote:3, enter, up, end'),
+    'fix me': Text('# FIXME: ', pause=0.005),
+    'to do': Text('# TODO: ', pause=0.005),
 }

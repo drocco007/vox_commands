@@ -1,5 +1,5 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation,
-                       Key, Text, FocusWindow, IntegerRef)
+                       Key, Text, FocusWindow, IntegerRef, Choice)
 
 
 #---------------------------------------------------------------------------
@@ -19,19 +19,28 @@ grammar = Grammar('VirtualBox commands', context=context)
 #  within a mapping spec and "%(text)s" within the associated action.
 
 example_rule = MappingRule(
-    name='VirtualBox commands',    
+    name='VirtualBox commands',
     mapping={
+        'Launch <n>': Key('w-%(n)s/20'),
+
         'Close tab': Key('c-w'),
         'entab': Key('c-pgdown'),
         'pretab': Key('c-pgup'),
         'flip': Key('c-tab'),
 
+        'Work on': Text('workon '),
+        'Work on <client>': Text('workon %(client)s'),
+        'Launch <client>': Text('launch-bt %(client)s'),
+
         'ess cee pee': Text('scp'),
-        'pee SQL': Text('psql')
+        'pee SQL': Text('psql'),
+
+        'user postgres': Text('sudo su postgres\n')
     },
     extras=[           # Special elements in the specs of the mapping.
         Dictation("text"),
         IntegerRef("n", 0, 100),  # Times to repeat the sequence.
+        Choice('client', {k:k.lower() for k in ('asppb', 'NHA', 'core')})
     ],
     )
 

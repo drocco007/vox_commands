@@ -1,0 +1,25 @@
+from dragonfly import Key, Text
+
+cmd.map = {
+    'cancel': Key('c-c'),
+    'scrub': Key('escape, backspace'),
+    'Slurp': Key('c-a, c-k'),
+
+    'lower (it | that)': Key('escape, l'),
+
+
+    # Words and phrases
+
+    '(copy|cee pee)': Text('cp '),
+    'grep': Text('grep '),
+    'Make (dir| directory)': Text('mkdir '),
+    '(move|emm vee)': Text('mv '),
+    'PG dump': Text('pg_dump'),
+
+    'tilde': Key('tilde'),
+
+
+    # git
+
+    'git save': Text('git save '),
+}

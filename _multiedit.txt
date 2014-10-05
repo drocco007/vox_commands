@@ -48,7 +48,7 @@ cmd.map = {
 
     'dev': Key('d,e,v'),
     'lib': Key('l,i,b'),
-    'ssh': Key('s,s,h'),
+    #'ssh': Key('s,s,h'),
 
     'comma': Key('comma'),
     'Comps': Key('comma, space'),
@@ -67,14 +67,17 @@ cmd.map = {
     'Cash': Key('dollar'),
     'ive': Key('hyphen'),
     'spive': Key('space, hyphen'),
+
     'tick': Key('apostrophe'),
     'ticks': Key('dquote'),
+    'bee tick': Key('backtick'),
+
     'dot': Key('dot'),
     'plus': Key('space, plus, space'),
     'ooot': Key('percent'),
     'Spike': Key('bar'),
     '(Star | Splat)': Key('asterisk'),
-    'Double (Star | Splat)': Key('asterisk:2'),
+    '(two | Double) (Star | Splat)': Key('asterisk:2'),
 
     'Squid': Key('tilde'),
     'Slash':  Key('slash'),
@@ -124,6 +127,7 @@ cmd.map = {
     "[<n>] space":                      release + Key("space:%(n)d"),
     "[<n>] enter":                      release + Key("enter:%(n)d"),
     "[<n>] slap":                      release + Key("enter:%(n)d"),
+    "snap": release + Key("c-enter"),
 
     "[<n>] tab":                        Key("tab:%(n)d"),
     "[<n>] delete":                     release + Key("del:%(n)d"),
@@ -165,6 +169,13 @@ def format_score(dictation):          # Function name must start with "format_".
       return '_'
     else:
       return "_".join(breakpoints.split(text)).lower()
+
+# Format: var some_words
+# def format_javascript_variable(dictation):
+#     """ var <dictation> """
+
+#     return ' '.join(('var', format_score(dictation)))
+
 
 def format_self_dot(dictation):          # Function name must start with "format_".
     """ self dot <dictation> """         # Docstring defining spoken-form.
@@ -240,3 +251,19 @@ def format_java_method(dictation):
 #    text = str(dictation)
 #    words = [word.lower() for word in text.split(" ")]
 #    return '@' + ".".join(words)
+
+
+def format_dunder(dictation):
+    """ dunder <dictation> """
+    text = str(dictation)
+    text = '_'.join(breakpoints.split(text)).lower()
+
+    return '__{}__'.format(text)
+
+
+def format_dotted(dictation):
+    """ dotted <dictation> """
+    text = str(dictation)
+    text = '.'.join(breakpoints.split(text)).lower()
+
+    return text
