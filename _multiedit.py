@@ -2,6 +2,7 @@
 
 from dragonfly import *
 from dragonglue import LinuxAppContext
+import natlink
 
 
 release = Key("shift:up, ctrl:up")
@@ -40,8 +41,10 @@ if namespace:
             def wrap_function(function):
                 def _function(dictation):
                     formatted_text = function(dictation)
-                    Text(formatted_text).execute()
+                    # Text(formatted_text).execute()
                     # Mimic(formatted_text).execute()
+                    # natlink.playString(formatted_text)
+                    Paste(formatted_text).execute()
 
                 return Function(_function)
 
