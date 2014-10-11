@@ -5,10 +5,14 @@ grammar = Grammar("launch")
 
 
 applications = {
-	'sublime': 'sublime subl',
-    'pycharm': 'pycharm /opt/pycharm/bin/pycharm.sh',
-    'chrome': 'chromium /usr/bin/chromium-browser',
-    'spotify': 'spotify /home/dan/bin/spotify',
+	'sublime': 'w-s',
+    'pycharm': 'w-d',
+    'chrome': 'w-f',
+    'logs': 'w-j',
+    'SQL': 'w-k',
+    'IPython': 'w-l',
+    'shell': 'w-semicolon',
+    # 'spotify': 'spotify /home/dan/bin/spotify',
 }
 
 # aliases
@@ -28,7 +32,7 @@ launch_rule = MappingRule(
     mapping={
         'Do run': Key('w-r'),
 
-        'get <application>': Command('/home/dan/bin/get_app.sh '),
+        'get <application>': Key('%(application)s'),
 
         'get (termie | terminal)': Command('xfce4-terminal --drop-down'),
 
