@@ -80,6 +80,7 @@ example_rule = MappingRule(
         'rename it': Key('s-f6'),
         'Re-factor [it]': Key('cas-t'),
 
+        'highlight level syntax': Key('cas-h/20, tab, pgup:3, pgdown, escape'),
         'Convert to spaces': Key('a-e, up, right, enter'),
         'Convert to tabs': Key('a-e, up, right, down, enter'),
 
