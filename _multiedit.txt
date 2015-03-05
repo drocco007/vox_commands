@@ -65,7 +65,9 @@ cmd.map = {
     'Bang': Key('exclamation'),
     'Shebang': Key('hash, exclamation'),
     'Cash': Key('dollar'),
+
     'ive': Key('hyphen'),
+    '<n> ive': Key('hyphen:%(n)d'),
     'spive': Key('space, hyphen'),
 
     'tick': Key('apostrophe'),

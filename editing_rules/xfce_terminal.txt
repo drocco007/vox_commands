@@ -18,8 +18,20 @@ cmd.map = {
 
     'tilde': Key('tilde'),
 
+    'cat': Text('cat '),
+    'less': Text('less '),
+    '(sed|said)': Text('sed '),
+
 
     # git
 
     'git save': Text('git save '),
+
+
+    # ag/Silver searcher
+
+    'splunk': Text('ag '),
+    'splunk <text>': Text('ag "%(text)s"'),
+    'splunk files': Text('ag -l '),
+    'splunk files <text>': Text('ag -l "%(text)s"'),
 }

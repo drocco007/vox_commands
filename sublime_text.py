@@ -39,6 +39,7 @@ example_rule = MappingRule(
         'See it': Key('cs-r'),
 
         'Nav': Key('c-p'),
+        'file list': Key('c-p'),
         'Nav <text>': Key('c-p/5') + Text('%(text)s'),
         'Nav in': Key('c-r'),
         'Nav in <text>': Key('c-r/5') + Text('%(text)s'),
@@ -54,6 +55,9 @@ example_rule = MappingRule(
 
         "find <text>":            Key("c-f/20") + Text("%(text)s\n"),
 
+        're-browse': Key('c-s, w-F'),
+
+
         # Selection commands
 
 
@@ -67,6 +71,8 @@ example_rule = MappingRule(
 
         'pound <directive>': Text('#%(directive)s '),
         'dot H': Key('dot, h'),
+
+        'New slide': Text('slide\n-----\n\n\n\n\n') + Key('left:3'),
     },
     extras=[           # Special elements in the specs of the mapping.
         Dictation("text"),

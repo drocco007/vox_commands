@@ -33,10 +33,13 @@ launch_rule = MappingRule(
         'Do run': Key('w-r'),
 
         'get <application>': Key('%(application)s'),
+        # 're-browse': Key('w-F'),
+
+        'voice sync': Command('subl --command voice_sync'),
 
         'get (termie | terminal)': Command('xfce4-terminal --drop-down'),
 
-        '(touch | refresh) multi-edit': Command('touch /home/dan/source/voice/natlink/commands/_multiedit.py'),
+        '(touch | refresh) multi-edit': Command('touch /home/drocco/source/voice/natlink/commands/_multiedit.py'),
     },
     extras=[
     	Choice('application', applications)

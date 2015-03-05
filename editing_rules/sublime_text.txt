@@ -35,4 +35,8 @@ cmd.map = {
 
 
     '[Console] log (time | timestamp)': Text('console.log(Date.now());', pause=0.005),
+
+
+    # Snippets
+    'document comment': Key('dquote:3, cs-d, up'),
 }
