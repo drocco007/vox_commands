@@ -14,6 +14,58 @@ cmd.map = {
     'comment': Key('c-slash'),
 
 
+    # Move next
+
+    'are': Key('right'),
+    '<n> are': Key('right:%(n)d'),
+    'ord': Key('c-right'),
+    '<n> ord': Key('c-right:%(n)d'),
+    'eyene': Key('down'),
+    '<n> eyene': Key('down:%(n)d'),
+    'aff': Key('a-down'),
+    '<n> aff': Key('a-down:%(n)d'),
+    'age': Key('pgdown'),
+    '<n> age': Key('pgdown:%(n)d'),
+
+
+    # Move previous
+
+    'par': Key('left'),
+    '<n> par': Key('left:%(n)d'),
+    'poured': Key('c-left'),
+    '<n> poured': Key('c-left:%(n)d'),
+    'pine': Key('up'),
+    '<n> pine': Key('up:%(n)d'),
+    'paff': Key('a-up'),
+    '<n> paff': Key('a-up:%(n)d'),
+    'page': Key('pgup'),
+    '<n> page': Key('pgup:%(n)d'),
+
+
+    # Select next
+
+    'saar': Key('s-right'),
+    '<n> saar': Key('s-right:%(n)d'),
+    'sword': Key('cs-right'),
+    '<n> sword': Key('cs-right:%(n)d'),
+    'sine': Key('c-l'),
+    '<n> sine': Key('c-l:%(n)d'),
+    'saff': Key('as-down'),
+    '<n> saff': Key('as-down:%(n)d'),
+
+
+    # Select previous
+
+    'spar': Key('s-left'),
+    '<n> spar': Key('s-left:%(n)d'),
+    'spoord': Key('cs-left'),
+    '<n> spoord': Key('cs-left:%(n)d'),
+    'spine': Key('c-l,s-up:2'),
+    '<n> spine': Key('c-l,s-up,s-up:%(n)d'),
+    'spaff': Key('as-up'),
+    '<n> spaff': Key('as-up:%(n)d'),
+
+
     # Selection manipulation
 
     'Sling': Key('c-l'),
