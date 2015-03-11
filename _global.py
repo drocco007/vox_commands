@@ -25,7 +25,7 @@ example_rule = MappingRule(
         'swap <text>': FocusWindow(title='%(text)s'),
         'win left': Key('w-left'),
         'win right': Key('w-right'),
-        'desk <n>': Key('cas-f%(n)d'),
+        'desk <n>': Key('w-%(n)d'),
 
         'snore': Function(snore),
 

@@ -12,11 +12,13 @@ applications = {
     'SQL': 'w-k',
     'IPython': 'w-l',
     'shell': 'w-semicolon',
+    'terminal': 'w-a',
     # 'spotify': 'spotify /home/dan/bin/spotify',
 }
 
 # aliases
 applications['charm'] = applications['pycharm']
+applications['termie'] = applications['terminal']
 
 
 def Command(cmd):
@@ -30,14 +32,12 @@ def Command(cmd):
 launch_rule = MappingRule(
     name="launch",
     mapping={
-        'Do run': Key('w-r'),
+        'Do run': Key('w-x'),
 
         'get <application>': Key('%(application)s'),
         # 're-browse': Key('w-F'),
 
         'voice sync': Command('subl --command voice_sync'),
-
-        'get (termie | terminal)': Command('xfce4-terminal --drop-down'),
 
         '(touch | refresh) multi-edit': Command('touch /home/drocco/source/voice/natlink/commands/_multiedit.py'),
     },
