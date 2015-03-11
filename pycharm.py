@@ -70,6 +70,8 @@ example_rule = MappingRule(
         'Run last': Key('s-f10'),
 
         # working within an editor
+
+        'centerize': Key('c-m'),
         'Fixit': Key('a-enter/20, down, up'), # (*)
         'Pre-bug': Key('s-f2'),
         'enbug': Key('f2'),
