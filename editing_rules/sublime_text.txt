@@ -62,8 +62,8 @@ cmd.map = {
     '<n> spoord': Key('cs-left:%(n)d'),
     'spine': Key('c-l,s-up:2'),
     '<n> spine': Key('c-l,s-up,s-up:%(n)d'),
-    'spaff': Key('as-up'),
-    '<n> spaff': Key('as-up:%(n)d'),
+    'spaaf': Key('as-up'),
+    '<n> spaaf': Key('as-up:%(n)d'),
 
 
     # Selection manipulation
