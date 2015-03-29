@@ -52,6 +52,7 @@ example_rule = MappingRule(
         'pretab': Key('c-pgup'),
         'flip': Key('c-tab'),
         '[Select] address': Key('a-d'),
+        'Copy address': Key('a-d/20, c-c'),
         'Tab <n>': Function(go_to_tab),
         'Rab <n>': Function(go_to_tab_right),
 

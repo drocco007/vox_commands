@@ -36,6 +36,7 @@ source_trees = {
     'enviro': '~/source/brightlink/envirocert/',
     'NHA': '~/source/brightlink/nha/',
     'current post': '~/source/posts/stevedore_template_resolver',
+    'sandbox': '~/source/sandbox/',
 }
 
 
@@ -68,6 +69,7 @@ command_rule = MappingRule(
         'cd': Text('cd'),
         'cd pop': Text('cd ../'),
         'cd <source_tree>': Text('cd %(source_tree)s'),
+        'Nav <source_tree>': Text('cd %(source_tree)s'),
 
 
         # docker
@@ -76,12 +78,18 @@ command_rule = MappingRule(
         '(docker | dock) PS': Text('docker ps'),
         '(docker | dock) PS all': Text('docker ps -a'),
 
+
         # git
 
         'git': Text('git '),
         'git all': Text('gitk --all') + Key('enter'),
         'git check out': Text('git checkout ') + Key('tab:2'),
+        'git clone': Text('git clone '),
+        'git clone clipboard': Text('git clone ') + Key('s-insert'),
+        'git commit': Text('git ci'),
+        'git commit all': Text('git ci -a'),
         'git merge tool': Text('git mergetool --tool=kdiff3'),
+        'git push': Text('git push '),
         'git rebase': Text('git rebase ') + Key('tab:2'),
         'git svn (dcommit|de-commit)': Text('git svn dcommit'),
         'git svn rebase': Text('git svn rebase'),
