@@ -1,5 +1,5 @@
 from dragonfly import (Grammar, MappingRule, Choice, Text, Key, Function)
-from dragonglue.command import send_command
+from dragonglue.command import send_command, Command
 
 grammar = Grammar("launch")
 
@@ -19,14 +19,6 @@ applications = {
 # aliases
 applications['charm'] = applications['pycharm']
 applications['termie'] = applications['terminal']
-
-
-def Command(cmd):
-    def ex(application=''):
-        # print 'execute', cmd + application
-        send_command(cmd + application)
-
-    return Function(ex)
 
 
 launch_rule = MappingRule(
