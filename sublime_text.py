@@ -1,6 +1,7 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation,
                        Key, Text, FocusWindow, IntegerRef, Choice)
 from dragonglue import LinuxAppContext
+from dragonglue.command import Command
 
 
 #---------------------------------------------------------------------------
@@ -31,6 +32,7 @@ example_rule = MappingRule(
         '[toggle] sidebar': Key('c-k,c-b'),
         '[toggle] menu': Key('cs-p') + Text('menu\n'),
         '[toggle] tabs': Key('cs-p') + Text('tabs\n'),
+        '[toggle] ruler': Command('/home/drocco/bin/utils/sublime_toggle_ruler.sh'),
 
         'entab': Key('c-pgdown'),
         'pretab': Key('c-pgup'),
